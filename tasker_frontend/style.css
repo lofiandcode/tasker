@@ -1,0 +1,22 @@
+.todo_column {
+    background: rgb(192, 191, 191);
+}
+
+.working_column {
+    background: rgb(170, 168, 168);
+}
+.done_column {
+    background: rgb(141, 140, 140);
+}
+
+.login_page {
+    display: block
+}
+
+.task_page {
+    display: none;
+}
+
+.edit_form {
+    display: none;
+}

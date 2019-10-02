@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="src/task.js"></script>
+        <script src="src/index.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="login_page">
+            <form id="login_form">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Username</label><br>
+                    <input type="text" id="username_input" placeholder="Enter Username Here">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Login</button>
+            </form>
+        </div>
+        <div class="task_page">
+            <div class="container">
+                <h1>Tasker</h1>
+                <h3 id="username_title"></h3>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="todo_column col-med-12" id="todo_column">
+                        <h3>To Do</h3>
+                        <ul id="To Do">
+                            
+                        </ul>
+
+                    </div>
+                    <div class="working_column col-med-6" id="working_column">
+                        <h3>Working</h3>
+                        <ul id="Working">
+                            
+                        </ul>
+                    </div>
+                    <div class="done_column col-med-6" id="done_column">
+                        <h3>Done</h3>
+                        <ul id="Done">
+                            
+                        </ul>
+                    </div>
+                </div>  
+            </div>
+            <div class="container">
+                <form id="new_task_form">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">New Task</label>
+                        <input type="text" class="form-control" id="new_task_input" placeholder="Enter Task Here">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Column Selction</label>
+                        <select class="form-control" id="new_column_state">
+                            <option>To Do</option>
+                            <option>Working</option>
+                            <option>Done</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Add Task</button>
+                </form>
+            </div>
+            <div class="container">
+                <form class="edit_form" id="edit_task_form">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Edit Task</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Column Selction</label>
+                        <select class="form-control" id="edit_task_state">
+                            <option>To Do</option>
+                            <option>Working</option>
+                            <option>Done</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Update Task</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
