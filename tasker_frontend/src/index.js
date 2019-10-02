@@ -11,29 +11,53 @@ document.addEventListener("DOMContentLoaded",() => {
     forms.newTaskForm.addEventListener('submit', e => addTask(e));
     forms.editTaskForm.addEventListener('submit', e => updateTask(e));
     forms.loginForm.addEventListener('submit', e => handleLoginSubmit(e));
-    // displayUserTasks();
+    forms.deleteUserForm.addEventListener('submit', e => deleteUser(e));
 })
 
 function getForms() {
     return { 
         "newTaskForm": document.getElementById("new_task_form"),
         "editTaskForm": document.getElementById("edit_task_form"),
-        "loginForm": document.getElementById("login_form")
+        "loginForm": document.getElementById("login_form"),
+        "deleteUserForm": document.getElementById("delete_user_form")
     };
+}
+
+function togglePage() {
+    const loginPage = document.querySelector('.login_page');
+    const taskPage = document.querySelector('.task_page');
+    loginPage.style.display = "none";
+    taskPage.style.display = "block";
+}
+
+function deleteUser(event) {
+    // event.preventDefault();
+
+    fetch(`${userURL}/${CURRENT_USER_ID}`, {
+        method: "DELETE"
+    })
+    .catch(err => alert(err.message));
+    // CURRENT_USER_ID = null;
+    // debugger .then(togglePage)
+    // .then(response => response.json())
+    // window.location.reload(false);
+    // console.log(window)
+    // togglePage();
 }
 
 function handleLoginSubmit(event) {
     event.preventDefault();
     const forms = getForms();
     const username = event.target.username_input.value;
-    fetch(userURL).then(response => response.json()).then(json => findOrCreateUser(json, username));
+    fetch(userURL)
+    .then(response => response.json())
+    .then(json => findOrCreateUser(json, username))
+    .catch(err => alert(err.message));
     forms.loginForm.reset();
 }
 
 function findOrCreateUser(usersArray, username) {
     const user = usersArray.find(user => user.name === username);
-    const loginPage = document.querySelector('.login_page');
-    const taskPage = document.querySelector('.task_page');
     const usernameTitle = document.getElementById('username_title');
     // console.log(user)
     if (user) {
@@ -45,8 +69,7 @@ function findOrCreateUser(usersArray, username) {
         createUser(username);
     }
     usernameTitle.textContent = `Username: ${username}`
-    loginPage.style.display = "none";
-    taskPage.style.display = "block";
+    togglePage();
 }
 
 function createUser(username) {
