@@ -68,7 +68,7 @@ function findOrCreateUser(usersArray, username) {
         //create user and toggle to empty Task Page
         createUser(username);
     }
-    usernameTitle.textContent = `Username: ${username}`
+    usernameTitle.textContent = `${username}`
     togglePage();
 }
 
