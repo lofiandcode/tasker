@@ -9,25 +9,28 @@
     </head>
     <body>
         <div class="login_page">
-            <form id="login_form">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Username</label><br>
-                    <input type="text" id="username_input" placeholder="Enter Username Here">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2">Login</button>
-            </form>
+            <div id="login_wrapper">
+                <form id="login_form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <br>
+                        <input type="text" id="username_input" placeholder="Enter Username Here">
+                    </div>
+                    <button type="submit" class="login_button">Login</button>
+                </form>
+            </div>
         </div>
         <div class="task_page">
             <div class="header_bar">
-                <div id="title"><h1>Tasker</h1></div>
+                <div id="title">Tasker</div>
                 <div id="user">
-                    <h3 id="username_title"></h3>
+                    <div id="username_title"></div>
                 </div>
-                <div id="delete_user">
+                <!-- <div id="delete_user"> -->
                     <form id="delete_user_form">
                             <button type="submit" class="btn_delete" id="delete_user_btn">Delete Account</button>
                     </form>
-                </div>
+                <!-- </div> -->
             </div>
             <div class="row">
                 <div id="todo_wrapper">

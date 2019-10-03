@@ -11,10 +11,24 @@
 
 .login_page {
     display: block
+    
 }
 
 .task_page {
     display: none;
+}
+
+#login_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#login_form {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
 }
 
 #new_form_wrapper {
@@ -50,13 +64,14 @@ body {
     background-color: rgba(211, 211, 211, 0.5);
     display: grid;
     grid-template: 100% / 14.25% 14.25% 14.25% 14.5% 14.25% 14.25% 14.25%;
-
+    margin-top: 8px;
 }
 
 #title {
     text-align: center;
     grid-area: 1 / 4 / 2 / 5;
     color: ivory;
+    font-size: 60px;
 }
 
 #user {
@@ -64,11 +79,19 @@ body {
     grid-area: 1 / 6 / 2 / 7;
     color: ivory;
 } 
+#username_title{
+    font-size: 40px;
+    padding-top: 20px;
+    /* box-align: left;
+    grid-area: 1 / 6 / 2 / 7; */
+    color: ivory;
+}
 
-#delete_user {
-    text-align: center;
+#delete_user_form {
+    text-align: left;
     grid-area: 1 / 7 / 2 / 8;
-    padding-top: 12px;
+    padding-top: 26px;
+    padding-left: 8px;
 }
 
 /* .column {
@@ -110,11 +133,11 @@ body {
 }
   
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 @media screen and (max-width: 600px) {
     .column {
@@ -124,6 +147,7 @@ body {
 
 .column_title {
     text-align: center;
+    margin-top: 0px;
 }
 
 /* Style inputs with type="text", select elements and textareas */
@@ -142,7 +166,7 @@ input[type=text], select, textarea {
   button[type=submit] {
     background-color: #4CAF50;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 18px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
