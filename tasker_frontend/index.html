@@ -19,77 +19,81 @@
         </div>
         <div class="task_page">
             <div class="header_bar">
-                    <div id="title"><h1>Tasker</h1></div>
-                    <div id="user">
-                        <h3 id="username_title"></h3>
-                    </div>
-                    <div id="delete_user">
-                        <form id="delete_user_form">
-                                <button type="submit" class="btn_delete" id="delete_user_btn">Delete Account</button>
-                        </form>
-                    </div>
+                <div id="title"><h1>Tasker</h1></div>
+                <div id="user">
+                    <h3 id="username_title"></h3>
+                </div>
+                <div id="delete_user">
+                    <form id="delete_user_form">
+                            <button type="submit" class="btn_delete" id="delete_user_btn">Delete Account</button>
+                    </form>
+                </div>
             </div>
-            <div>
-                <div class="row">
+            <div class="row">
+                <div id="todo_wrapper">
                     <div class="column" id="todo_column" style="background-color:#ccc;">
                         <h3 class="column_title">To Do</h3>
                         <ul id="To Do">
-                            
                         </ul>
-
                     </div>
+                </div>
+                <div id="working_wrapper">
                     <div class="column" id="working_column" style="background-color:#bbb;">
                         <h3 class="column_title">Working</h3>
                         <ul id="Working">
-                            
                         </ul>
                     </div>
+                </div>
+                <div id="done_wrapper">
                     <div class="column" id="done_column" style="background-color:#aaa;">
                         <h3 class="column_title">Done</h3>
                         <ul id="Done">
-                            
                         </ul>
                     </div>
-                </div>  
-            </div>
-            <div class="new_container">
-                <form id="new_task_form">
-                    <div class="form-group">
-                        <label for="formGroupExampleInput">New Task</label>
-                        <br>
-                        <input type="text" id="new_task_input" placeholder="Enter Task Here">
+                </div>
+                <div id="new_form_wrapper">
+                    <div class="new_container">
+                        <form id="new_task_form">
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">New Task</label>
+                                <br>
+                                <input type="text" id="new_task_input" placeholder="Enter Task Here">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Column Selction</label>
+                                <br>
+                                <select id="new_column_state">
+                                    <option>To Do</option>
+                                    <option>Working</option>
+                                    <option>Done</option>
+                                </select>
+                            </div>
+                            <button type="submit">Add Task</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Column Selction</label>
-                        <br>
-                        <select id="new_column_state">
-                            <option>To Do</option>
-                            <option>Working</option>
-                            <option>Done</option>
-                        </select>
+                </div>
+                <div id="edit_form_wrapper">
+                    <div class="edit_container">
+                        <form class="edit_form" id="edit_task_form">
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Edit Task</label>
+                                <br>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Column Selction</label>
+                                <br>
+                                <select class="form-control" id="edit_task_state">
+                                    <option>To Do</option>
+                                    <option>Working</option>
+                                    <option>Done</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Update Task</button>
+                        </form>
                     </div>
-                    <button type="submit">Add Task</button>
-                </form>
-            </div>
-            <div class="edit_container">
-                <form class="edit_form" id="edit_task_form">
-                    <div class="form-group">
-                        <label for="formGroupExampleInput">Edit Task</label>
-                        <br>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Column Selction</label>
-                        <br>
-                        <select class="form-control" id="edit_task_state">
-                            <option>To Do</option>
-                            <option>Working</option>
-                            <option>Done</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Update Task</button>
-                </form>
-            </div>
+                </div>
+            </div>  
         </div>
     </body>
 </html>
