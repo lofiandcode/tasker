@@ -189,7 +189,7 @@ function populateEditTaskForm(taskId) {
     // console.log("In populateEditTaskForm = ", CURRENT_EDIT_TASK_ID)
     const forms = getForms();
     const li = document.getElementById(`${taskId}`)
-    forms.editTaskForm.style.display = 'block';
+    forms.editTaskForm.parentElement.style.display = 'block';
     forms.editTaskForm.querySelector('input').value = li.querySelector('p').textContent;
     document.getElementById('edit_task_state').value = li.parentElement.id;
 }
@@ -217,7 +217,7 @@ function updateTask(event){
     .then(json => updateDOMTask(json))
     .catch(err => alert(err.message));
     forms.editTaskForm.reset();
-    forms.editTaskForm.style.display = 'none';
+    forms.editTaskForm.parentElement.style.display = 'none';
 }
 
 function updateDOMTask(taskObj) {

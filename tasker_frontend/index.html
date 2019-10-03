@@ -32,34 +32,36 @@
             <div>
                 <div class="row">
                     <div class="column" id="todo_column" style="background-color:#ccc;">
-                        <h3>To Do</h3>
+                        <h3 class="column_title">To Do</h3>
                         <ul id="To Do">
                             
                         </ul>
 
                     </div>
                     <div class="column" id="working_column" style="background-color:#bbb;">
-                        <h3>Working</h3>
+                        <h3 class="column_title">Working</h3>
                         <ul id="Working">
                             
                         </ul>
                     </div>
                     <div class="column" id="done_column" style="background-color:#aaa;">
-                        <h3>Done</h3>
+                        <h3 class="column_title">Done</h3>
                         <ul id="Done">
                             
                         </ul>
                     </div>
                 </div>  
             </div>
-            <div class="container">
+            <div class="new_container">
                 <form id="new_task_form">
                     <div class="form-group">
                         <label for="formGroupExampleInput">New Task</label>
+                        <br>
                         <input type="text" id="new_task_input" placeholder="Enter Task Here">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Column Selction</label>
+                        <br>
                         <select id="new_column_state">
                             <option>To Do</option>
                             <option>Working</option>
@@ -69,14 +71,16 @@
                     <button type="submit">Add Task</button>
                 </form>
             </div>
-            <div class="container">
+            <div class="edit_container">
                 <form class="edit_form" id="edit_task_form">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Edit Task</label>
+                        <br>
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Column Selction</label>
+                        <br>
                         <select class="form-control" id="edit_task_state">
                             <option>To Do</option>
                             <option>Working</option>
