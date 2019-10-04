@@ -20,15 +20,17 @@
 
 #login_wrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
 }
 
 #login_form {
     border-radius: 10px;
-    background-color: #f2f2f2;
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
+    background-color: #dbd5d5;
+    padding: 20px;
+    margin: 4px;
+    grid-column: 6 / span 2;
+    grid-row: 6 / span 2;
 }
 
 #new_form_wrapper {
@@ -162,6 +164,7 @@ input[type=text], select, textarea {
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
   }
   
+
   /* Style the submit button with a specific background color etc */
   button[type=submit] {
     background-color: #4CAF50;
@@ -177,6 +180,11 @@ input[type=text], select, textarea {
     background-color: #45a049;
   }
   
+  #login_button {
+    width: 100%;
+    border: 1px hidden;
+}
+
   
 
   
