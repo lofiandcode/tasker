@@ -30,7 +30,16 @@
     padding: 20px;
     margin: 4px;
     grid-column: 6 / span 2;
-    grid-row: 6 / span 2;
+    grid-row: 5 / span 2;
+}
+
+#greeting_wrapper {
+    text-align: center;
+}
+
+#greeting {
+    text-align: center;
+    font-size: 25px;
 }
 
 #new_form_wrapper {
@@ -44,6 +53,7 @@
 }
 /* Add a background color and some padding around the form */
 .new_container {
+    display: none;
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -92,6 +102,12 @@ body {
 #delete_user_form {
     text-align: left;
     grid-area: 1 / 7 / 2 / 8;
+    padding-top: 26px;
+    padding-left: 8px;
+}
+
+#show_new_task_form {
+    grid-area: 1 / 1 / 2 / 2;
     padding-top: 26px;
     padding-left: 8px;
 }
@@ -183,6 +199,19 @@ input[type=text], select, textarea {
   #login_button {
     width: 100%;
     border: 1px hidden;
+}
+
+#show_edit_task_form {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    border: none;
+}
+#delete_task_button {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    border: none;
 }
 
   

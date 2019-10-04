@@ -12,6 +12,9 @@
             <div id="login_wrapper">
                 <form id="login_form">
                     <div class="form-group">
+                        <div id="greeting_wrapper">
+                            <label id="greeting">Welcome to Tasker</label><br>
+                        </div>
                         <input type="text" id="username_input" placeholder="Enter Username Here">
                     </div>
                     <button type="submit" id="login_button">Login</button>
@@ -24,11 +27,12 @@
                 <div id="user">
                     <div id="username_title"></div>
                 </div>
-                <!-- <div id="delete_user"> -->
-                    <form id="delete_user_form">
-                            <button type="submit" class="btn_delete" id="delete_user_btn">Delete Account</button>
-                    </form>
-                <!-- </div> -->
+                <form id="delete_user_form">
+                        <button type="submit" class="btn_delete" id="delete_user_btn">Delete Account</button>
+                </form>
+                <form id="show_new_task_form">
+                        <button type="submit" id="show_new_task_form_btn">Add Task</button>
+                </form>
             </div>
             <div class="row">
                 <div id="todo_wrapper">

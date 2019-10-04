@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded",() => {
     forms.newTaskForm.addEventListener('submit', e => addTask(e));
     forms.editTaskForm.addEventListener('submit', e => updateTask(e));
     forms.loginForm.addEventListener('submit', e => handleLoginSubmit(e));
-    forms.deleteUserForm.addEventListener('submit', e => deleteUser(e));
+    forms.deleteUserForm.addEventListener('submit', e => startDeleteUser(e));
+    forms.displayNewTaskForm.addEventListener('submit', e => displayNewTaskForm(e))
 })
 
 function getForms() {
@@ -19,31 +20,57 @@ function getForms() {
         "newTaskForm": document.getElementById("new_task_form"),
         "editTaskForm": document.getElementById("edit_task_form"),
         "loginForm": document.getElementById("login_form"),
-        "deleteUserForm": document.getElementById("delete_user_form")
+        "deleteUserForm": document.getElementById("delete_user_form"),
+        "displayNewTaskForm": document.getElementById("show_new_task_form")
     };
 }
 
-function togglePage() {
+function togglePage(toggleObj) {
     const loginPage = document.querySelector('.login_page');
     const taskPage = document.querySelector('.task_page');
-    loginPage.style.display = "none";
-    taskPage.style.display = "block";
+    loginPage.style.display = toggleObj.login;
+    taskPage.style.display = toggleObj.tasks;
 }
 
-function deleteUser(event) {
-    // event.preventDefault();
+function displayNewTaskForm(event) {
+    event.preventDefault();
+    const forms = getForms();
+    forms.newTaskForm.parentElement.style.display = "block";
+}
 
+function startDeleteUser(event) {
+    // event.preventDefault();
+    let confirmation = confirm("Are you sure?");
+    if (confirmation) {
+        // getUserTasksToDelete();
+        deleteUser();
+    }
+}
+
+// function getUserTasksToDelete() {
+//     fetch(
+//         `${userURL}/${CURRENT_USER_ID}`
+//     ).then(response => response.json())
+//     .then(json =>deleteTasksBeforeUser(json))
+//     .catch(err => alert(err.message));
+// }
+
+// function deleteTasksBeforeUser(user) {
+//     for (task of user.tasks) {
+//         deleteTask(task.id);
+//     }
+//     deleteUser();
+// }
+
+function deleteUser() {
     fetch(`${userURL}/${CURRENT_USER_ID}`, {
         method: "DELETE"
     })
     .catch(err => alert(err.message));
-    // CURRENT_USER_ID = null;
-    // debugger .then(togglePage)
-    // .then(response => response.json())
-    // window.location.reload(false);
-    // console.log(window)
-    // togglePage();
+    togglePage({login: "block", tasks: "none"});
 }
+
+
 
 function handleLoginSubmit(event) {
     event.preventDefault();
@@ -69,7 +96,7 @@ function findOrCreateUser(usersArray, username) {
         createUser(username);
     }
     usernameTitle.textContent = `${username}`
-    togglePage();
+    togglePage({login: "none", tasks: "block"});
 }
 
 function createUser(username) {
@@ -96,9 +123,9 @@ function setNewUserAsCurrent(user) {
 function displayUserTasks() {
     fetch(
         `${userURL}/${CURRENT_USER_ID}`
-        ).then(response => response.json())
-        .then(json =>displayTasks(json))
-        .catch(err => alert(err.message));
+    ).then(response => response.json())
+    .then(json =>displayTasks(json))
+    .catch(err => alert(err.message));
 }
 
 function displayTasks(user) {
@@ -108,7 +135,7 @@ function displayTasks(user) {
     }
 }
 
-function createTaskNode(taskObj){
+function createTaskNode(taskObj) {
     // console.log(taskObj)
     let li = document.createElement('li');
     const blockquote = document.createElement('blockquote');
@@ -125,10 +152,12 @@ function createTaskNode(taskObj){
     pTag.textContent = taskObj.text;
 
     editButton.textContent = 'Edit';
+    editButton.id = 'show_edit_task_form';
     editButton.addEventListener('click', (e) => populateEditTaskForm(taskObj.id));
-    deleteButton.className = 'btn-danger'
+    deleteButton.className = 'btn-danger';
+    deleteButton.id = 'delete_task_button';
     deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', (e) => deleteTask(taskObj.id));
+    deleteButton.addEventListener('click', (e) => startDeleteTask(taskObj.id));
    
     blockquote.appendChild(pTag);
     blockquote.appendChild(br);
@@ -156,13 +185,14 @@ function taskStateSwitch(state, li) {
 
 }
 
-function addTask(event){
+function addTask(event) {
     event.preventDefault();
     const forms = getForms();
     const newTask = new Task(event.target[0].value, event.target[1].value, CURRENT_USER_ID);
     // console.log(newTask)
     postNewTask(newTask);
     forms.newTaskForm.reset();
+    forms.newTaskForm.parentElement.style.display = 'none';
 }
 
 function postNewTask(taskObj) {
@@ -194,7 +224,7 @@ function populateEditTaskForm(taskId) {
     document.getElementById('edit_task_state').value = li.parentElement.id;
 }
 
-function updateTask(event){
+function updateTask(event) {
     event.preventDefault();
     // console.log("In updateTask = ", CURRENT_EDIT_TASK_ID)
     const text = event.target[0].value;
@@ -229,8 +259,14 @@ function updateDOMTask(taskObj) {
     }
 }
 
+function startDeleteTask(taskId) {
+    let confirmation = confirm("Are you sure?");
+    if (confirmation) {
+        deleteTask(taskId);
+    }
+}
+
 function deleteTask(taskId) {
-    event.preventDefault();
     const taskLi = document.getElementById(taskId);
     taskLi.remove();
     fetch(`${tasksURL}/${taskId}`, {
@@ -241,7 +277,6 @@ function deleteTask(taskId) {
         },
         body: JSON.stringify({"id": taskId })
     }).catch(err => alert(err.message));
-        //.then(console.log) .then(response => response.json()) json => removeTaskFromDOM(json, taskId)).catch(err => alert(err.message));
 }
 
 
