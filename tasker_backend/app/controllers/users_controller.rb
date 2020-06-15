@@ -21,7 +21,11 @@ class UsersController < ApplicationController
 
     def destroy
         @user = User.find(params[:id])
-        @user.destroy
+        if (@user.destroy)
+            render :json => @user
+        else 
+            render :json => {success: "fail"}
+        end
     end 
 
     def user_params
